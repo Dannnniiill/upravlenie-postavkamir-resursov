@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление поставками</title>
+</head>
+<body>
+    <h1>Управление поставками</h1>
+    <h2>Создание нового заказа</h2>
+    <form action="/create" method="post">
+        <input type="text" name="supplier" placeholder="Поставщик" required>
+        <input type="text" name="material" placeholder="Материал" required>
+        <input type="number" name="quantity" placeholder="Количество" required>
+        <input type="date" name="date" required>
+        <button type="submit">Создать заказ</button>
+    </form>
+
+    <h2>Существующие заказы</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Поставщик</th>
+            <th>Материал</th>
+            <th>Количество</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.supplier }}</td>
+            <td>{{ order.material }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.date }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                <a href="/edit/{{ order.id }}">Редактировать</a>
+                <form action="/delete/{{ order.id }}" method="post" style="display: inline;">
+                    <button type="submit">Удалить</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование заказа</title>
+</head>
+<body>
+    <h1>Редактирование заказа</h1>
+    <form action="" method="post">
+        <input type="text" name="supplier" value="{{ order.supplier }}" placeholder="Поставщик" required>
+        <input type="text" name="material" value="{{ order.material }}" placeholder="Материал" required>
+        <input type="number" name="quantity" value="{{ order.quantity }}" placeholder="Количество" required>
+        <input type="date" name="date" value="{{ order.date }}" required>
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</body>
+</html>
